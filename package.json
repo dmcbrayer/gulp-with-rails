@@ -1,0 +1,25 @@
+{
+  "name": "rails-gulp-asset-pipeline",
+  "version": "0.0.1",
+  "description": "Tech demo",
+  "main": "Gulpfile.js",
+  "dependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel McBrayer",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.7.12",
+    "gulp": "^3.9.0",
+    "gulp-bower": "0.0.10",
+    "gulp-cache": "^0.4.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-ruby-sass": "^1.0.5",
+    "gulp-uglify": "^1.5.1"
+  }
+}
