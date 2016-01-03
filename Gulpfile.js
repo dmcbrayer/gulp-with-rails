@@ -5,12 +5,13 @@ var browserify      = require('browserify');
 var babelify        = require('babelify');
 var source          = require('vinyl-source-stream');
 var sass            = require('gulp-ruby-sass') ;
-var browserSync     = require('browser-sync');
+var browserSync     = require('browser-sync').create();
 var imagemin        = require('gulp-imagemin');
 var cache           = require('gulp-cache');
 var concat          = require('gulp-concat');
 var streamify       = require('gulp-streamify');
 var uglify          = require('gulp-uglify');
+var reload          = browserSync.reload;
 
 var config          = require('./gulp-config');
 
@@ -24,8 +25,7 @@ gulp.task('css', function() { 
             compass: true
          }) 
         .pipe(minifyCss())
-         .pipe(gulp.dest(config.dest.sass))
-        .pipe(browserSync.stream()); 
+         .pipe(gulp.dest(config.dest.sass)); 
 });
 
 gulp.task('scripts', function() {
@@ -56,16 +56,16 @@ gulp.task('watch', function() {
     gulp.watch(config.watchAssetFiles, ['build']);
 });
 
-gulp.task('default', ['build', 'watch']);
+gulp.task('default', ['serve']);
 
-/* gulp.task('serve', ['build'], function() {
+gulp.task('serve', ['build'], function() {
     browserSync.init({
-        server: {
-            baseDir: "./_site"
-        }
+        proxy: 'localhost:3000'
     });
 
     // Start a watch for rebuilds
-    gulp.watch(config.watchAssetFiles, ['jekyll-rebuild']);
-    gulp.watch(config.watchHtmlFiles, ['jekyll-rebuild']);
-}); */
+    gulp.watch(config.watch.sass, ['css', reload]);
+    gulp.watch(config.watch.scripts, ['scripts', reload]);
+    gulp.watch(config.watch.react, ['react', reload]);
+    gulp.watch(config.watch.images, ['images', reload]);
+});

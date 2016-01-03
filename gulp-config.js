@@ -1,15 +1,14 @@
-var assetDir = './gulp/src';
-var outputDir = './lib/assets';
+var assetDir = './gulp/assets';
+var outputDir = './public/assets';
 
 module.exports = {
 
-    // Asset files that gulp will watch for changes
-    watchAssetFiles: [
-        assetDir + '/stylesheets/**/*.scss',
-        assetDir + '/javascripts/**/*.js',
-        assetDir + '/javascripts/**/*.jsx',
-        assetDir + '/images/**/*',
-    ],
+    watch: {
+        sass: assetDir + '/stylesheets/**/*.scss',
+        scripts: assetDir + '/javascripts/**/*.js',
+        react: assetDir + '/javascripts/**/*.jsx',
+        images: assetDir + '/images/**/*',
+    },
 
     src: {
         sass: assetDir + '/stylesheets',
@@ -23,7 +22,7 @@ module.exports = {
 
     dest: {
         images:  './app/assets/images',
-        scripts: outputDir + '/javascripts/gulp',
-        sass: outputDir + '/stylesheets/gulp',
+        scripts: outputDir + '/javascripts',
+        sass: outputDir + '/stylesheets',
     },
 }

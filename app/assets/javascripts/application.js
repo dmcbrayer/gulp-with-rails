@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require gulp/bundle
-//= require gulp/main
+//= require bundle
+//= require main
 //= require_tree .
