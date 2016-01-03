@@ -23,7 +23,7 @@ module.exports = {
 
     dest: {
         images:  './app/assets/images',
-        scripts: outputDir + '/javascripts',
-        sass: outputDir + '/stylesheets',
+        scripts: outputDir + '/javascripts/gulp',
+        sass: outputDir + '/stylesheets/gulp',
     },
 }
