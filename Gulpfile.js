@@ -1,6 +1,9 @@
 var gulp            = require('gulp');
 var minifyCss       = require('gulp-minify-css');
-var notify          = require("gulp-notify") 
+var notify          = require("gulp-notify") ;
+var browserify      = require('browserify');
+var babelify        = require('babelify');
+var source          = require('vinyl-source-stream');
 var sass            = require('gulp-ruby-sass') ;
 var browserSync     = require('browser-sync');
 var imagemin        = require('gulp-imagemin');
@@ -31,13 +34,21 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest(config.dest.scripts));
 });
 
+gulp.task('react', function() {
+  return browserify({entries: config.src.reactSrc, extensions: ['.jsx'], debug: true})
+      .transform('babelify', {presets: ['es2015', 'react']})
+      .bundle()
+      .pipe(source('bundle.js'))
+      .pipe(gulp.dest(config.dest.scripts));
+});
+
 gulp.task('images', function() {
   return gulp.src(config.src.images)
     .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
     .pipe(gulp.dest(config.dest.images));
 });
 
-gulp.task('build', ['images', 'scripts','css']);
+gulp.task('build', ['images', 'react','scripts','css']);
 /* gulp.task('serve', ['build'], function() {
     browserSync.init({
         server: {

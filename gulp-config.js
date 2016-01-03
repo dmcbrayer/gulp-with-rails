@@ -22,6 +22,7 @@ module.exports = {
     src: {
         sass: assetDir + '/stylesheets',
         sassFile: assetDir + '/stylesheets/main.scss',
+        reactSrc: assetDir + '/javascripts/app.jsx',
         scripts: [
             assetDir + '/javascripts/**/*.js', 
         ],
@@ -29,7 +30,7 @@ module.exports = {
     },
 
     dest: {
-        images: outputDir + '/images',
+        images:  './app/assets/images',
         scripts: outputDir + '/javascripts',
         sass: outputDir + '/stylesheets',
     },
