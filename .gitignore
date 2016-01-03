@@ -22,3 +22,5 @@
 /lib/assets/stylesheets/gulp
 
 /public/assets/*
+
+.DS_Store
