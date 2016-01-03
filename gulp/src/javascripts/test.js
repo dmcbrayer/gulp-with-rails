@@ -1,1 +1,1 @@
-console.log("the test works");
+console.log("the test stinks");

@@ -9,6 +9,7 @@ var browserSync     = require('browser-sync');
 var imagemin        = require('gulp-imagemin');
 var cache           = require('gulp-cache');
 var concat          = require('gulp-concat');
+var streamify       = require('gulp-streamify');
 var uglify          = require('gulp-uglify');
 
 var config          = require('./gulp-config');
@@ -39,6 +40,7 @@ gulp.task('react', function() {
       .transform('babelify', {presets: ['es2015', 'react']})
       .bundle()
       .pipe(source('bundle.js'))
+      .pipe(streamify(uglify()))
       .pipe(gulp.dest(config.dest.scripts));
 });
 
@@ -49,6 +51,13 @@ gulp.task('images', function() {
 });
 
 gulp.task('build', ['images', 'react','scripts','css']);
+
+gulp.task('watch', function() {
+    gulp.watch(config.watchAssetFiles, ['build']);
+});
+
+gulp.task('default', ['build', 'watch']);
+
 /* gulp.task('serve', ['build'], function() {
     browserSync.init({
         server: {
@@ -60,6 +69,3 @@ gulp.task('build', ['images', 'react','scripts','css']);
     gulp.watch(config.watchAssetFiles, ['jekyll-rebuild']);
     gulp.watch(config.watchHtmlFiles, ['jekyll-rebuild']);
 }); */
-
-
-gulp.task('default', ['build']);
