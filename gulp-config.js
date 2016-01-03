@@ -11,8 +11,7 @@ module.exports = {
     },
 
     src: {
-        sass: assetDir + '/stylesheets',
-        sassFile: assetDir + '/stylesheets/main.scss',
+        sass: assetDir + '/stylesheets/**/*.scss',
         reactSrc: assetDir + '/javascripts/app.jsx',
         scripts: [
             assetDir + '/javascripts/**/*.js', 
@@ -21,7 +20,7 @@ module.exports = {
     },
 
     dest: {
-        images:  './app/assets/images',
+        images:  outputDir + '/images',
         scripts: outputDir + '/javascripts',
         sass: outputDir + '/stylesheets',
     },
