@@ -16,6 +16,7 @@
 !/log/.keep
 /tmp
 
+/.sass-cache
 /node_modules
 /lib/assets/javascripts/gulp
 /lib/assets/stylesheets/gulp
