@@ -12,7 +12,7 @@ module.exports = {
 
     src: {
         sass: assetDir + '/stylesheets/**/*.scss',
-        reactSrc: assetDir + '/javascripts/app.jsx',
+        reactSrc: assetDir + '/javascripts/components/app.jsx',
         scripts: [
             assetDir + '/javascripts/**/*.js', 
         ],

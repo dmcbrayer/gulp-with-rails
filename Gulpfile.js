@@ -15,12 +15,11 @@ var reload          = browserSync.reload;
 
 var config          = require('./gulp-config');
 
-
 gulp.task('css', function() { 
-    return gulp.src(config.src.sass)
-        .pipe(sass())
-        .pipe(minifyCss())
-         .pipe(gulp.dest(config.dest.sass)); 
+  return gulp.src(config.src.sass)
+      .pipe(sass())
+      .pipe(minifyCss())
+       .pipe(gulp.dest(config.dest.sass)); 
 });
 
 gulp.task('scripts', function() {
