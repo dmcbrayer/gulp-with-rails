@@ -20,12 +20,29 @@ export default class Main extends React.Component {
       this._handleInputChange = this._handleInputChange.bind(this);
       this.showResolution = this.showResolution.bind(this);
       this.shouldShowResolution = this.shouldShowResolution.bind(this);
+      this.hideResolution = this.hideResolution.bind(this);
+    }
+
+    hideResolution() {
+      this.setState({
+        showResolution: false,
+        resolution: ''
+      });
     }
 
     showResolution() {
       this.setState({
         showResolution: true
       });
+    }
+
+
+    shouldShowResolution() {
+      if(this.state.showResolution === true) {
+        return (
+          <h2>Your new years resolution is {this.state.resolution}</h2>
+        )
+      }
     }
 
     _handleInputChange(e) {
@@ -35,13 +52,6 @@ export default class Main extends React.Component {
       });
     }
 
-    shouldShowResolution() {
-      if(this.state.showResolution === true) {
-        return (
-          <h2>Your new years resolution is {this.state.resolution}</h2>
-        )
-      }
-    }
 
     render() {
         return (
@@ -77,17 +87,13 @@ export default class Main extends React.Component {
                   primary={true}
                   onClick={this.showResolution} />
 
+                <RaisedButton
+                  label="Clear"
+                  onClick={this.hideResolution} />
+
                 { this.shouldShowResolution() }
               </div>
           </div>
         )
     }
-}
-
-Main.propTypes = {
-  subText: React.PropTypes.string
-};
-
-Main.defaultProps = {
-  subText: "This is the default subtext"
 }
